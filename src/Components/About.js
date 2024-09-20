@@ -1,33 +1,39 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function About() {
-    const [style, setStyle] = useState({
-        color:'black',
-        backgroundColor:'white'
-    })
-    const [btnStyle, setBtnStyle]= useState("Change to dark theme")
+export default function About(props) {
 
-    const toggleStyle = () => {
-        if(style.color==='black'){
-            setStyle({
-                color:'white',
-                backgroundColor:'black',
-                border:'2px solid white'
-            })
-            setBtnStyle("Change to light theme")
-        }
-        else{
-            setStyle({
-                color:'black',
-                backgroundColor:'white'
-            })
-            setBtnStyle("Change to dark theme")
-        }
+    // const [style, setStyle] = useState({
+    //     color:'black',
+    //     backgroundColor:'white'
+    // })
+    // const [btnStyle, setBtnStyle]= useState("Change to dark theme")
+
+    // const toggleStyle = () => {
+    //     if(style.color==='black'){
+    //         setStyle({
+    //             color:'white',
+    //             backgroundColor:'black',
+    //             border:'2px solid white'
+    //         })
+    //         setBtnStyle("Change to light theme")
+    //     }
+    //     else{
+    //         setStyle({
+    //             color:'black',
+    //             backgroundColor:'white'
+    //         })
+    //         setBtnStyle("Change to dark theme")
+    //     }
+    // }
+
+    let style ={
+        color: props.mode ==='dark'? 'white':'grey',
+        backgroundColor:props.mode === 'dark'?'grey' :'white',
     }
 
     return (
         <>
-        <div className='container' style={style}>
+        <div className='container' style={{color:props.mode==='dark'?'white':'grey'}}>
             <h1>About</h1>
             <div className="accordion" id="accordionExample">
                 <div className="accordion-item">
@@ -68,9 +74,6 @@ export default function About() {
                 </div>
             </div>
         </div>
-         <div className='container'>
-         <button className="btn btn-primary my-2" onClick={toggleStyle}>{btnStyle}</button>
-     </div>
      </> 
     )
 }
